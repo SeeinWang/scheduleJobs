@@ -8,6 +8,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:3000",
+  "http://localhost:5000",
   "https://play.arcadequest.app",
   "https://www.play.arcadequest.app/",
   "https://arcadequest-l3pj.onrender.com"
@@ -31,7 +32,9 @@ app.use(
 );
 
 
-app.use("/quests", quests)
+app.use("/quests", quests.router);
+
+quests.scheduleAllQuest();
 
 //PORT
 const port = process.env.PORT || 8000;
